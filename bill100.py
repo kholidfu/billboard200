@@ -1,3 +1,4 @@
+import json
 import re
 import urllib2
 from collections import Counter
@@ -39,7 +40,16 @@ class Billboard100Parser(object):
         found = [re.search(r"v=(.*?)&", i).group(1) for i in self.get_videos()]
         return found
 
+    def to_json(self):
+        data = {'results': []}
+        for i in zip(self.get_titles(), self.get_ids()):
+            data['results'].append({'title': i[0], 'id': i[1]})
+        return data
+
 
 if __name__ == '__main__':
     b = Billboard100Parser()
-    print b.get_ids()
+    for i in b.to_json()['results']:
+        print i['title']
+        print i['id']
+        print "========================"
