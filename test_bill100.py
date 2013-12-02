@@ -48,7 +48,7 @@ class Bill100Test(unittest.TestCase):
         self.assertEqual(len_titles, len_ids)
 
     def test_json_output(self):
-        """make sure the output is json type object"""
+        """make sure the output is dict type object"""
         self.assertTrue(b.to_json().keys(), True)
 
 
