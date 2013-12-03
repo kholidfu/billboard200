@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import json
 import re
 import urllib2
