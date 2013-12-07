@@ -15,7 +15,7 @@ def tryint(s):
 def alphanum_key(s):
     return [tryint(i) for i in re.findall(r"[0-9][0-9]?[0-9]?$", s)]
 
-class Billboard100Parser(object):
+class Top200Billboard(object):
 
     def __init__(self):
         self.url = 'http://www.youtube.com/playlist?list=PL55713C70BA91BD6E'
@@ -51,7 +51,7 @@ class Billboard100Parser(object):
 
 
 if __name__ == '__main__':
-    b = Billboard100Parser()
+    b = Top200Billboard()
     for i in b.to_json()['results']:
         print i['title']
         print i['id']
