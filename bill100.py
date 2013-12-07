@@ -5,16 +5,18 @@ import urllib2
 from collections import Counter
 
 def tryint(s):
+    """Human sorting by nedbat.
+    http://nedbatchelder.com/blog/200712/human_sorting.html"""
     try:
         return int(s)
     except:
         return s
-     
+
 def alphanum_key(s):
     return [tryint(i) for i in re.findall(r"[0-9][0-9]?[0-9]?$", s)]
 
 class Billboard100Parser(object):
-    
+
     def __init__(self):
         self.url = 'http://www.youtube.com/playlist?list=PL55713C70BA91BD6E'
 
@@ -25,7 +27,7 @@ class Billboard100Parser(object):
     def get_titles(self):
         data = self.get_html()
         pattern = re.compile(r"ltr\">(.*?)</span>")
-        found = re.findall(pattern, data) 
+        found = re.findall(pattern, data)
         return found
 
     def get_videos(self):
